@@ -9,6 +9,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+import { LOCALE_ID } from '@angular/core';
+registerLocaleData(localePt);
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +25,9 @@ import { HomeComponent } from './home/home.component';
     ClientesModule,
     HttpClientModule
   ],
-  providers: [ClientesService],
+  providers: [ClientesService, {
+    provide: LOCALE_ID, useValue: 'pt-BR'
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

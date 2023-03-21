@@ -1,6 +1,6 @@
 <h1 class="mt-4">Cliente Formulario</h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">Cadastro</li>
+    <li class="breadcrumb-item active">{{title}}</li>
 </ol>
 <div class="container">
   <form  (ngSubmit)="onSubmit()">
@@ -27,7 +27,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="">Data cadastro: </label>
-          <input type="text" class="form-control" disabled="true" [ngModel]="cliente.dataCadastro | date" name="dataCadastro">
+          <input type="text" class="form-control" disabled="true" [ngModel]="cliente.dataCadastro | date:'dd/MM/yyyy'" name="dataCadastro">
         </div>
       </div>
     </div>
@@ -47,9 +47,16 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-2">
-        <button type="submit" class="btn btn-success">
+      <div class="row-md-2">
+        <button type="submit" class="btn btn-success mr-1" *ngIf="!cliente.id">
           <i class="fa fa-save"></i> Salvar
+        </button>
+        <button type="submit" class="btn btn-warning mr-1" *ngIf="cliente.id">
+          <i class="fa fa-sync"></i> Atualizar
+        </button>
+
+        <button type="button" class="btn btn-danger" (click)="voltar()">
+          <i class="fa fa-arrow-alt-circle-left"></i> Voltar
         </button>
       </div>
     </div>
