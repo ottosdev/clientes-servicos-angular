@@ -1,3 +1,4 @@
+import { ServicoPrestadoModule } from './servico-prestado/servico-prestado.module';
 import { ClientesService } from './services/clientes.service';
 import { ClientesModule } from './clientes/clientes.module';
 import { TemplateModule } from './template/template.module';
@@ -23,9 +24,10 @@ registerLocaleData(localePt);
     AppRoutingModule,
     TemplateModule,
     ClientesModule,
+    ServicoPrestadoModule,
     HttpClientModule
   ],
-  providers: [ClientesService, {
+  providers: [ClientesService ,{
     provide: LOCALE_ID, useValue: 'pt-BR'
   }],
   bootstrap: [AppComponent]

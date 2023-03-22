@@ -1,0 +1,89 @@
+<h1 class="mt-4">Serviço prestado</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrum-bitem active">Novo</li>
+</ol>
+
+<div class="container">
+  <form (ngSubmit)="onSubmit()">
+
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-success" role="alert" *ngIf="success">
+          Servico cadastrado com sucesso
+        </div>
+        <div class="alert alert-danger" role="alert" *ngFor="let erro of erros">
+          {{ erro }}
+       </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label class="mr-1">Cliente: </label>
+          <select
+            class="form-control"
+            [(ngModel)]="servico.idCliente"
+            [ngModelOptions]="{ standalone: true }"
+          >
+            <option value="">Selecione...</option>
+            <option *ngFor="let cliente of clientes" [ngValue]="cliente.id">
+              {{ cliente.nome }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Descrição: </label>
+          <input
+            type="text"
+            name="descricao"
+            id="inputDescricao"
+            class="form-control"
+            [(ngModel)]="servico.descricao"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Data: </label>
+          <input
+            type="text"
+            name="data"
+            id="inputData"
+            class="form-control"
+            [(ngModel)]="servico.data"
+          />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Preço: </label>
+          <input
+            type="text"
+            name="preco"
+            id="inputPreco"
+            class="form-control"
+            [(ngModel)]="servico.preco"
+          />
+        </div>
+      </div>
+    </div>
+
+      <button type="submit" class="btn btn-success mr-1">
+        <i class="fa fa-save"></i> Salvar
+      </button>
+      <button type="submit" class="btn btn-danger" routerLink="/servico-prestado-listar">
+        <i class="fa fa-arrow-left"></i> Voltar
+      </button>
+
+  </form>
+</div>
