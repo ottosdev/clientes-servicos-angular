@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { ServicoPrestadoModule } from './servico-prestado/servico-prestado.module';
 import { ClientesService } from './services/clientes.service';
 import { ClientesModule } from './clientes/clientes.module';
@@ -13,11 +14,15 @@ import { HomeComponent } from './home/home.component';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { LOCALE_ID } from '@angular/core';
+import { LoginComponent } from './login/login.component';
+import { LayoutComponent } from './layout/layout.component';
 registerLocaleData(localePt);
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +30,8 @@ registerLocaleData(localePt);
     TemplateModule,
     ClientesModule,
     ServicoPrestadoModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [ClientesService ,{
     provide: LOCALE_ID, useValue: 'pt-BR'
