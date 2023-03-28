@@ -1,3 +1,5 @@
+import { AuthService } from './services/auth.service';
+import { ServicoPrestadoService } from './services/servico-prestado.service';
 import { FormsModule } from '@angular/forms';
 import { ServicoPrestadoModule } from './servico-prestado/servico-prestado.module';
 import { ClientesService } from './services/clientes.service';
@@ -18,12 +20,7 @@ import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 registerLocaleData(localePt);
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    LoginComponent,
-    LayoutComponent
-  ],
+  declarations: [AppComponent, HomeComponent, LoginComponent, LayoutComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,11 +28,17 @@ registerLocaleData(localePt);
     ClientesModule,
     ServicoPrestadoModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
-  providers: [ClientesService ,{
-    provide: LOCALE_ID, useValue: 'pt-BR'
-  }],
-  bootstrap: [AppComponent]
+  providers: [
+    ClientesService,
+    ServicoPrestadoService,
+    AuthService,
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt-BR',
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
